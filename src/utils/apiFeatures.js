@@ -15,7 +15,7 @@ class APIFeatures {
       : {};
 
     this.query = this.query.find({ ...keyword });
-    // console.log("🚀 ~ APIFeatures ~ serach ~ keyword:", keyword);
+    // console.log("APIFeatures ~ serach ~ keyword:", keyword);
     return this;
   }
 
@@ -26,10 +26,10 @@ class APIFeatures {
     removeFields.forEach((key) => delete queryCopy[key]);
 
     //Filter for price and rating
-    console.log(queryCopy);
+    // console.log(queryCopy);
     let queryStr = JSON.stringify(queryCopy);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
-    console.log(queryStr);
+    // console.log(queryStr);
     this.query = this.query.find(JSON.parse(queryStr));
     return this;
   }
