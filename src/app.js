@@ -3,12 +3,15 @@ const app = express();
 
 const errorMiddleware = require("./middlewares/error");
 
-app.use(express.json());
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // Route Imports
-const productRoutes = require("./routes/productRoute");
+const product = require("./routes/productRoute");
+const user = require("./routes/userRoute");
 
-app.use("/api/v1", productRoutes);
+app.use("/api/v1", product);
+app.use("/api/v1", user);
 
 // Middleware for Errors
 app.use(errorMiddleware);
