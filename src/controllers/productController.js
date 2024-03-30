@@ -65,7 +65,7 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     });
   }
 
-  await product.deleteOne();
+  await product.deleteOne({ _id: req.params.id });
 
   res.status(200).json({
     success: true,
