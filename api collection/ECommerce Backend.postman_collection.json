@@ -1,0 +1,795 @@
+{
+	"info": {
+		"_postman_id": "84a648f5-3876-4d2b-9e10-a6a806001444",
+		"name": "ECommerce Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31798759"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/products?page=1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "product",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Laptop",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "price[gt]",
+									"value": "1500",
+									"disabled": true
+								},
+								{
+									"key": "price[lt]",
+									"value": "800",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/product/66071dbece261e8602856211",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"product",
+								"66071dbece261e8602856211"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product - Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Product 4\",\r\n    \"price\":1400,\r\n    \"description\": \"this is a simple desc\",\r\n    \"category\":\"Laptop\",\r\n    \"images\":{\r\n        \"public_id\":\"simple Image\", \r\n        \"url\": \"sample URL\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/product/66071c98ca57f13e3206c85b",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"product",
+								"66071c98ca57f13e3206c85b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product - Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Product 4\",\r\n    \"price\":1400,\r\n    \"description\": \"this is a simple desc\",\r\n    \"category\":\"Laptop\",\r\n    \"images\":{\r\n        \"public_id\":\"simple Image\", \r\n        \"url\": \"sample URL\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/product/660892e438d9d7faa28bfbc2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"product",
+								"660892e438d9d7faa28bfbc2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Product - Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"This is latest 1\",\r\n    \"price\":3000,\r\n    \"description\": \"this is a simple desc\",\r\n    \"category\":\"Apple\",\r\n    \"images\":{\r\n        \"public_id\":\"simple Image\", \r\n        \"url\": \"sample URL\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/product/new",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"product",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"User Two\",\r\n    \"email\":\"two@two.com\",\r\n    \"password\": \"one12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/register",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"one@one.com\",\r\n    \"password\": \"one12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"test@test.com\",\r\n    \"password\": \"adasdasdsadsda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/logout",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"aliakbar.mql@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/password/forgot",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"password",
+								"forgot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"12345678\",\r\n    \"confirmPassword\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/password/reset/tokennnnnn",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"password",
+								"reset",
+								"tokennnnnn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/me",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update/Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"one12345\",\r\n    \"newPassword\": \"one123456\",\r\n    \"confirmPassword\": \"one123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/password/update",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"password",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"one12345\",\r\n    \"email\": \"test@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/me/update",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"me",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create / Update Review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"660c04451454ebb7fa48b5c2\",\r\n    \"comment\": \"this is okk\",\r\n    \"rating\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/review",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/reviews?id=660c04451454ebb7fa48b5c2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "660c04451454ebb7fa48b5c2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Review",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/reviews?productId=660c04451454ebb7fa48b5c2&id=660c04c61454ebb7fa48b5d0",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "660c04451454ebb7fa48b5c2"
+								},
+								{
+									"key": "id",
+									"value": "660c04c61454ebb7fa48b5d0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Users - Admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/users",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User - Admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/user/66073c92db1ebfbb7c0a48fe",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"66073c92db1ebfbb7c0a48fe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User - Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/user/66073d389d89a5fa2501934b",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"66073d389d89a5fa2501934b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Muhasdsadwr\",\r\n    \"email\": \"two@two.com\",\r\n    \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/user/66073c92db1ebfbb7c0a48fe",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"66073c92db1ebfbb7c0a48fe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "New Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"shippingInfo\": {\r\n        \"address\": \"12sadasd3 Main St\",\r\n        \"city\": \"Example City\",\r\n        \"state\": \"Example State\",\r\n        \"country\": \"Example Country\",\r\n        \"pinCode\": 12345,\r\n        \"phoneNo\": 1234567890\r\n    },\r\n    \"orderItems\": [\r\n        {\r\n            \"name\": \"Example Product\",\r\n            \"price\": \"45\",\r\n            \"quantity\": \"2\",\r\n            \"image\": \"example_product_2.jpg\",\r\n            \"product\": \"660c044c1454ebb7fa48b5c6\"\r\n        }\r\n    ],\r\n    \"paymentInfo\": {\r\n        \"id\": \"1234567890\",\r\n        \"status\": \"Paid\"\r\n    },\r\n    \"itemsPrice\": 69.97,\r\n    \"taxPrice\": 5.25,\r\n    \"shippingPrice\": 10,\r\n    \"totalPrice\": 85.22,\r\n    \"orderStatus\": \"Processing\",\r\n    \"deliveredAt\": \"2024-04-10T12:00:00.000Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/order/new",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"order",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/order/660c76641f44496622177b7f",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"order",
+								"660c76641f44496622177b7f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders - Admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/orders",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order - Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\" : \"Delivered\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/order/660c81d5053c89bc69ccddae",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"order",
+								"660c81d5053c89bc69ccddae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order - Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/order/660c81d5053c89bc69ccddae",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"order",
+								"660c81d5053c89bc69ccddae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders (LoggedIn)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/orders/me",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"orders",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

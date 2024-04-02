@@ -5,6 +5,7 @@ const APIFeatures = require("../utils/apiFeatures");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const uploadOnCloudinary = require("../utils/cloudinary");
 
 // Register User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -15,13 +16,21 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Email already exist", 400));
   }
 
+  // let avatarLocalPath = req.files.avatar;
+
+  // console.log(avatarLocalPath);
+
+  // const avatar = await uploadOnCloudinary(avatarLocalPath);
+
+  // console.log(avatar);
+
   const user = await User.create({
     name,
     email,
     password,
     avatar: {
-      public_id: "abc",
-      url: "abc",
+      public_id: "avatar.public_id",
+      url: "avatar.url",
     },
   });
 
